@@ -4,7 +4,7 @@ from pages.base_page import BasePage
 
 class ResetPasswordPage(BasePage):
     LINK_RESET_PASS = (By.LINK_TEXT, "Восстановить пароль")
-    PERSONAL_ACCOUNT_BUTTON = (By.CSS_SELECTOR, "p.AppHeader_header__linkText__3q_va.ml-2:nth-of-type(3)")
+    PERSONAL_ACCOUNT_BUTTON = (By.CSS_SELECTOR, "a.AppHeader_header__link__3D_hX:nth-child(3) > p:nth-child(2)")
     INPUT_EMAIL = (By.NAME, "name")
     RESET_PASSWORD_BUTTON = (By.CSS_SELECTOR, "button.button_button__33qZ0.button_button_type_primary__1O7Bx")
     INACTIVE_PASSWORD_INPUT = (By.CSS_SELECTOR, "div.input.input_type_password.input_size_default input[type='password']")

@@ -1,6 +1,7 @@
 import allure
 from pages.personal_account import PersonalAccountPage
 from pages.main_page import MainPage
+from data import ACCOUNT_DATA
 
 class TestMakeOrder:
 
@@ -9,15 +10,11 @@ class TestMakeOrder:
     def test_authorize_and_take_order(self, driver):
         personal_account = PersonalAccountPage(driver)
         main_page = MainPage(driver)
-
-        driver.get("https://stellarburgers.nomoreparties.site/")
         main_page.click_on_personal_account_button()
 
-        allure.attach("Email", "shagova14764@yandex.ru")
-        allure.attach("Password", "123456")
 
-        personal_account.input_email('shagova14764@yandex.ru')
-        personal_account.input_password('123456')
+        personal_account.input_email(ACCOUNT_DATA['email'])
+        personal_account.input_password(ACCOUNT_DATA['password'])
         personal_account.click_login_and_wait_for_url_change()
 
         main_page.click_on_order_button()
@@ -30,14 +27,10 @@ class TestMakeOrder:
         personal_account = PersonalAccountPage(driver)
         main_page = MainPage(driver)
 
-        driver.get("https://stellarburgers.nomoreparties.site/")
         main_page.click_on_personal_account_button()
 
-        allure.attach("Email", "shagova14764@yandex.ru")
-        allure.attach("Password", "123456")
-
-        personal_account.input_email('shagova14764@yandex.ru')
-        personal_account.input_password('123456')
+        personal_account.input_email(ACCOUNT_DATA['email'])
+        personal_account.input_password(ACCOUNT_DATA['password'])
         personal_account.click_login_and_wait_for_url_change()
 
         main_page.click_on_order_button()

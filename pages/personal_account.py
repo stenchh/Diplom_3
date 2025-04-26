@@ -9,7 +9,9 @@ class PersonalAccountPage(BasePage):
     ORDER_HISTORY = (By.CSS_SELECTOR, "a.Account_link__2ETsJ[href='/account/order-history']")
     LOGOUT_BUTTON = (By.CLASS_NAME, "Account_button__14Yp3")
     INPUT_EMAIL = (By.NAME, "name")
-    LOGIN_BUTTON = (By.CSS_SELECTOR, "button.button_button__33qZ0.button_button_type_primary__1O7Bx")
+    LOGIN_BUTTON =(By.CLASS_NAME, "button_button__33qZ0")
+    ORDER_ELEMENT = (By.CLASS_NAME, 'OrderHistory_textBox__3lgbs')
+    ORDER_NUMBER = (By.CSS_SELECTOR, '.text_type_digits-default')
 
     @allure.step("Нажать на кнопку 'Войти' и ждать изменения URL")
     def click_login_and_wait_for_url_change(self):
@@ -33,3 +35,8 @@ class PersonalAccountPage(BasePage):
     def click_order_history(self):
         self.click_element(self.ORDER_HISTORY)
         self.wait_for_url("https://stellarburgers.nomoreparties.site/account/order-history")
+
+    @allure.step('Проверить номер последнего заказа')
+    def get_last_order_number(self, timeout=5):
+        last_order_number = self.scroll_and_get_last_element_text(self.ORDER_ELEMENT, self.ORDER_NUMBER, timeout)
+        return last_order_number.lstrip('#')
