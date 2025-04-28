@@ -98,3 +98,5 @@ class MainPage(BasePage):
 
             updated_counter_value = int(self.find_element(self.COUNTER_LOCATOR).text.strip())
 
+    def get_current_url_main(self):
+        return self.get_current_url()

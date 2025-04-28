@@ -10,8 +10,9 @@ class TestPersonalAccount:
     def test_go_to_personal_account(self, driver):
         main_page = MainPage(driver)
         main_page.click_on_personal_account_button()
+        current_url = main_page.get_current_url_main()
 
-        assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
+        assert current_url == 'https://stellarburgers.nomoreparties.site/login'
 
     @allure.title("Переход в историю заказов")
     @allure.step("Переход в историю заказов после авторизации")
